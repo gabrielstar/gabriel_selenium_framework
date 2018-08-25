@@ -1,12 +1,11 @@
 package gabriel.selenium.ideas.spec;
 
+
 import gabriel.selenium.ideas.utilities.CreateDriver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 
 public abstract class BasicAbstractSpec {
     /*
@@ -36,7 +35,7 @@ public abstract class BasicAbstractSpec {
     public void before2_logBasicInfo(){
         System.out.println("Class: " + this.getClass().getName());
         try {
-            System.out.println("Driver session ID: " + CreateDriver.getInstance().getSessionId());
+            System.out.println("Driver session ID: " + gabriel.selenium.ideas.utilities.CreateDriver.getInstance().getSessionId());
             System.out.println("Driver browser: "  + CreateDriver.getInstance().getSessionBrowser());
             System.out.println("Driver env: "  + CreateDriver.getInstance().getSessionVersion());
             System.out.println("Driver platform: "  + CreateDriver.getInstance().getSessionPlatform());
