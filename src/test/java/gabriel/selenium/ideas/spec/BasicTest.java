@@ -17,7 +17,7 @@ public class BasicTest extends BasicAbstractSpec {
      * that is why mr_checker relies on selectors and not web elements I guess
      * @throws Exception
      */
-    @Test
+    //Test
     public void staleElementExceptionTest() throws Exception {
 
         onetMainPage.visit();
@@ -46,15 +46,13 @@ public class BasicTest extends BasicAbstractSpec {
         assert onetMainPage.isAtOnetPages() == true;
 
     }
-    //@Test
+    @Test
     public void withPopUpAttachedToPageTest() throws Exception {
 
         onetMainPage.visit();
         try {
             onetMainPage.waitForPopUpToLoad();
             if (onetMainPage.hasPopUp()) {
-                Thread.sleep(30000);
-
                 onetMainPage.acceptPopUp();
             }
         } catch (RequiredElementTimeoutException e) {

@@ -145,7 +145,11 @@ public class CreateDriver {
                         System.out.println("Setting no browser - suites need to set explicitely");
                     } else {//repeated code - put in helper method/class
                         System.out.println("Setting browser " + browser);
-                        instance.setDriver(browser, Global_VARS.DEF_PLATFORM, Global_VARS.DEF_ENVIRONMENT, opts);
+                        String env = Global_VARS.DEF_ENVIRONMENT;
+                        if(instance.props.getProperty("environment")!=null){
+                            env = instance.props.getProperty("environment");
+                        }
+                        instance.setDriver(browser, Global_VARS.DEF_PLATFORM, env, opts);
                     }
                 } else {//default
                     System.out.println("Setting default browser");
@@ -220,13 +224,13 @@ public class CreateDriver {
                     System.setProperty("webdriver.chrome.driver", props.getProperty("chrome.driver.windows.path"));
                     webDriver.set(new ChromeDriver(chOptions.merge(caps)));
                 } else if (environment.equalsIgnoreCase("remote")) {
-                    String remoteHubURL = "http://mygrid- hub.companyname.com:4444/wd/hub";
+                    String remoteHubURL = instance.props.getProperty("grid");
                     caps.setCapability("browserName",
                             browser);
-                    caps.setCapability("version",
-                            caps.getVersion());
-                    caps.setCapability("platform",
-                            platform);
+//                    caps.setCapability("version",
+//                            caps.getVersion());
+//                    caps.setCapability("platform",
+//                            platform);
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
                     ((RemoteWebDriver) webDriver.get()).setFileDetector(
                             new LocalFileDetector());
@@ -252,6 +256,17 @@ public class CreateDriver {
                     } catch (Exception e) {
                         System.out.println(" Exception " + e.toString());
                     }
+                }else if (environment.equalsIgnoreCase("remote")) {
+                    String remoteHubURL = instance.props.getProperty("grid");
+                    caps.setCapability("browserName",
+                            browser);
+//                    caps.setCapability("version",
+//                            caps.getVersion());
+//                    caps.setCapability("platform",
+//                            platform);
+                    webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
+                    ((RemoteWebDriver) webDriver.get()).setFileDetector(
+                            new LocalFileDetector());
                 }
 
                 break;
