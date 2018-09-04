@@ -185,7 +185,7 @@ public class CreateDriver {
         DesiredCapabilities caps = null;
         String localHub = "http://127.0.0.1:4273/wd/hub";
         String getPlatform = null;
-
+        System.out.println("Setting for " + browser);
         switch (browser) {
             case "firefox":
                 caps = DesiredCapabilities.firefox();
