@@ -246,7 +246,7 @@ public class CreateDriver {
 
                 ieOpts.requireWindowFocus();
                 ieOpts.merge(caps);
-
+                caps.setCapability("browserName",browser);
                 caps.setCapability("requireWindowFocus", true);
                 //sometimes iedriverServer starts with non 100% zoom, we can ignore that but then we need to reset zoom on real URL
                 //caps.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
@@ -260,8 +260,7 @@ public class CreateDriver {
                     }
                 }else if (environment.equalsIgnoreCase("remote")) {
                     String remoteHubURL = instance.props.getProperty("grid");
-                    caps.setCapability("browserName",
-                            browser);
+                    System.out.println("STarting ie");
 //                    caps.setCapability("version",
 //                            caps.getVersion());
 //                    caps.setCapability("platform",
