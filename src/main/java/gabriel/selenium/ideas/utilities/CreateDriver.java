@@ -240,6 +240,7 @@ public class CreateDriver {
 
                 break;
             case "internet explorer":
+                System.out.println("Setting ie");
                 caps = DesiredCapabilities.internetExplorer();
 
                 InternetExplorerOptions ieOpts = new InternetExplorerOptions();
