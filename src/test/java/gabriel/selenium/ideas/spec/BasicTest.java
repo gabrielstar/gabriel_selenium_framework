@@ -2,12 +2,14 @@ package gabriel.selenium.ideas.spec;
 
 import gabriel.selenium.ideas.pageObjects.aut.basic.RequiredElementTimeoutException;
 import gabriel.selenium.ideas.pageObjects.aut.concrete.OnetMainPage;
+import gabriel.selenium.ideas.utilities.CreateDriver;
 import gabriel.selenium.ideas.utilities.Utilities;
+import org.openqa.selenium.TimeoutException;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class BasicTest extends BasicAbstractSpec {
-    private static OnetMainPage onetMainPage = new OnetMainPage();
+
 
     /**
      * If you use Factory this will not throw StaleException but if you do it old selenium way
@@ -19,7 +21,7 @@ public class BasicTest extends BasicAbstractSpec {
      */
     //Test
     public void staleElementExceptionTest() throws Exception {
-
+        OnetMainPage onetMainPage = new OnetMainPage();
         onetMainPage.visit();
         try {
             onetMainPage.waitForPopUpToLoad();
@@ -48,7 +50,7 @@ public class BasicTest extends BasicAbstractSpec {
     }
     @Test
     public void withPopUpAttachedToPageTest() throws Exception {
-
+        OnetMainPage onetMainPage = new OnetMainPage();
         onetMainPage.visit();
         try {
             onetMainPage.waitForPopUpToLoad();
@@ -57,6 +59,12 @@ public class BasicTest extends BasicAbstractSpec {
             }
         } catch (RequiredElementTimeoutException e) {
             ; //is one off
+        } catch (TimeoutException e){
+            if(CreateDriver.getInstance().getProps().getProperty("browser").equals("internet explorer")){
+                ; //skip - expected
+            }else{
+                throw e;
+            }
         }
         if (onetMainPage.isLoaded()) {
             System.out.println("is loaded");

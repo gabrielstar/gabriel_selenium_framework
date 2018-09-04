@@ -54,7 +54,9 @@ public class CreateDriver {
     private CreateDriver() {
         parseProperties();
     }
-
+    public Properties getProps(){
+        return this.props;
+    }
     /**
      * 1. reads properties from default file and
      * 2. merges final result with platform specific file if exists and
