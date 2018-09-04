@@ -259,8 +259,8 @@ public class CreateDriver {
                         System.out.println(" Exception " + e.toString());
                     }
                 }else if (environment.equalsIgnoreCase("remote")) {
-                    String remoteHubURL = instance.props.getProperty("grid");
-                    System.out.println("STarting ie");
+                    String remoteHubURL = props.getProperty("grid");
+                    System.out.println("Starting ie on GRID " + remoteHubURL);
 //                    caps.setCapability("version",
 //                            caps.getVersion());
 //                    caps.setCapability("platform",
