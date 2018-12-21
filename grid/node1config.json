@@ -16,6 +16,8 @@
     {
       "browserName": "internet explorer",
       "platform": "WINDOWS",
+      "version":11,
+      "platform":"WINDOWS",
       "maxInstances": 3,
       "seleniumProtocol": "WebDriver"
     },
