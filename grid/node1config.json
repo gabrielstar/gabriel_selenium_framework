@@ -4,18 +4,19 @@
     {
       "browserName": "firefox",
       "marionette": true,
-      "maxInstances": 0,
+      "acceptInsecureCerts" : true,
+      "maxInstances": 3,
       "seleniumProtocol": "WebDriver"
     },
     {
       "browserName": "chrome",
-      "maxInstances": 2,
+      "maxInstances": 0,
       "seleniumProtocol": "WebDriver"
     },
     {
       "browserName": "internet explorer",
       "platform": "WINDOWS",
-      "maxInstances": 2,
+      "maxInstances": 3,
       "seleniumProtocol": "WebDriver"
     },
     {
@@ -31,7 +32,7 @@
   "port": -1,
   "register": true,
   "registerCycle": 5000,
-  "hub": "http://localhost:4444",
+  "hub": "http://10.44.85.12:4444",
   "nodeStatusCheckTimeout": 5000,
   "nodePolling": 5000,
   "role": "node",
